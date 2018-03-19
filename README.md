@@ -1,9 +1,9 @@
-# PRÁCTICA 3. CIFRADO DE RC4
+# PRÁCTICA 4. CIFRADO DE RC4
 
 ### OBJETIVO
 
-  Implementar el cifrado de flujo RC4.
+  Implementar multiplicador con polinomio de SNOW y AES.
 
 
 
-[Despliegue](https://alu0100819847.github.io/RC4-1718/)
+[Despliegue](https://alu0100819847.github.io/Multiplicador_SNOW_AES/)
