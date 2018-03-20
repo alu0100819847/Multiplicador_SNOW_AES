@@ -16,11 +16,11 @@
   <link rel="stylesheet" type="text/css" href="../../css/style.css">
   <link rel="stylesheet" type="text/css" href="../../css/mystyle.css">
 
-  <script type="text/javascript" src="js/Verify.js"></script>
   <script type="text/javascript" src="js/global.js"></script>
-  <script type="text/javascript" src="js/Vigenere.js"></script>
+  <script type="text/javascript" src="js/AES.js"></script>
+  <script type="text/javascript" src="js/SNOW.js"></script>
+  <script type="text/javascript" src="js/mult.js"></script>
   <script type="text/javascript" src="js/herramientas.js"></script>
-
 </head>
 
 <body>
@@ -44,9 +44,9 @@
               <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav navbar-right">
                   <li class=""><a href="../1-Vernam/Vernam.html">Práctica 1</a></li>
-                  <li class="active"><a href="Vigenere.html">Práctica 2</a></li>
+                  <li class=""><a href="../2-Vigenere/Vigenere.html">Práctica 2</a></li>
                   <li class=""><a href="../3-RC4/RC4.html">Práctica 3</a></li>
-                  <li class=""><a href="../4-Mult/Multiplicador.html">Práctica 4</a></li>
+                  <li class="active"><a href="Multiplicador.html">Práctica 4</a></li>
                 </ul>
               </div>
             </div>
@@ -57,22 +57,26 @@
           <div class="container">
             <div class="row">
               <div class="banner-info text-center wow fadeIn delay-05s">
-                <h1>CIFRADO VIGENERE</h1>
+                <h1>Modificación Multiplicador: AES, SNOW 3G</h1>
                 <div class="introdatos">
                 <table>
                   <tr>
-                    <th><div style="padding: 10px 60px;"><h3>Mensaje: </h3></div></th>
-                    <td><input id="original" autofocus onkeypress="tpressKey(event)" placeholder="MENSAJE" size="40"></td>
+                    <th><div style="padding: 10px 60px;"><h3>Numero 1: </h3></div></th>
+                    <td><input id="x1" autofocus onchange="mult()" placeholder="MENSAJE" size="40"></td>
                   </tr>
                   <tr>
-                    <th><div style="padding: 10px 60px;"><h3>Clave: </h3></div></th>
-                    <td><input id="Clave" onkeypress="tpressKey(event)" placeholder="CLAVE" size="40"></td>
+                    <th><div style="padding: 10px 60px;"><h3>Numero 2: </h3></div></th>
+                    <td><input id="x2" autofocus onchange="mult()" placeholder="MENSAJE" size="40"></td>
+                  </tr>
+                  <tr>
+                    <th><div style="padding: 10px 60px;"><h3>Polinomio: </h3></div></th>
+                    <td><input id="Polinomio" onchange="mult()" placeholder="CLAVE" size="40"></td>
                   </tr>
                   <tr>
                     <th></th>
                     <td>
                       <button class="boton2" onClick="clean()">BORRAR</button>
-                      <button class="boton2" onClick="Vigenere()">Run</button>
+                      <button class="boton2" onClick="mult()">Run</button>
                     </td>
                   </tr>
                 </table>
@@ -84,36 +88,47 @@
 
 
                   <tr>
-                    <th>Mensaje:</th>
-                    <td><span class="output" id="intro"></span></td>
+                    <th>Primer byte:</th>
+                    <td><span class="output" id="entrada1"></span></td>
                   </tr>
                   <tr>
-                    <th>Clave:</th>
-                    <td><span class="output" id="clave"></span></td>
+                    <th>Segundo byte:</th>
+                    <td><span class="output" id="entrada2"></span></td>
                   </tr>
                   <tr>
-                    <th>Salida:</th>
-                    <td><span class="output" id="salida"></span></td>
+                    <th>Polinomio:</th>
+                    <td><span class="output" id="pol"></span></td>
+                  </tr>
+                  <tr>
+                    <th>Numero 1 bin:</th>
+                    <td><span class="output" id="bin1"></span></td>
+                  </tr>
+                  <tr>
+                    <th>Numero 2 bin:</th>
+                    <td><span class="output" id="bin2"></span></td>
+                  </tr>
+                  <tr>
+                    <th>Resultado:</th>
+                    <td><span class="output" id="Res"></span></td>
                   </tr>
 
                 </table>
                 </div>
-                <a href="fromVigenere.html" class="mybtn">DESCIFRADOR</a>
-                <a href="mVigenere.html" class="mybtn">Modificación</a>
+                <a href="Multiplicador.html" class="mybtn">Original</a>
                 <div class="resultados" id = "resultado">
                   <table>
                     <tr><th><h2>Ejemplo 1: </h2></th></tr>
                     <tr>
-                      <th> Mensaje: </th>
-                      <td id = "m1">ESTE MENSAJE SE AUTODESTRUIRA</td>
+                      <th> Numero 1: </th>
+                      <td id = "n1">57</td>
                     </tr>
                     <tr>
-                      <th> Clave: </th>
-                      <td id= "k1">MISION</td>
+                      <th> Numero 2: </th>
+                      <td id= "n2">83</td>
                     </tr>
-
-                      <th> Salida: </th>
-                      <td id = "s1">QALM ARZASRS FQ IMBCQQALZIVDI</td>
+                    <tr>
+                      <th> Polinomio: </th>
+                      <td id = "p">A</td>
                     </tr>
                     <tr>
                       <th></th>
