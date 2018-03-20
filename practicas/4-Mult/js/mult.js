@@ -18,17 +18,17 @@ function mult() {
 }
 
 function tobin(num){
-  console.log("num " + num)
+  //console.log("num " + num)
   var sol = "";
   for (var i = 0; i < 2; i++){
     var temo=HEX[num[i]];
-    console.log("pintando temo"+temo);
+    //console.log("pintando temo"+temo);
     var bin = temo.toString(2);
     while(bin.length < 4){
       bin = "0" + bin;
     }
     sol = "" + sol +bin
-    console.log(sol);
+    //console.log(sol);
   }
   return sol;
 }
@@ -93,10 +93,11 @@ function xor(b1, b2){
 
 function finalxor(vec) {
   var sol = vec[0];
+  console.log(vec);
   for(var i = 1; i < vec.length; i++){
-    console.log(i+": "+vec[i]);
+    //console.log(i+": "+vec[i]);
     sol = xor(sol, vec[i]);
-    console.log(sol);
+    //console.log(sol);
   }
   console.log("Mi solucion final:"+sol);
   return sol;
