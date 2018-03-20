@@ -1,4 +1,4 @@
-# PRÁCTICA 4. CIFRADO DE RC4
+# PRÁCTICA 4. Multiplicador de SNOW 3G y AES.
 
 ### OBJETIVO
 

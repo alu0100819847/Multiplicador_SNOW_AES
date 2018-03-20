@@ -6,6 +6,13 @@ function copia(){
 }
 
 function clean(){
-  Clave.value= "";
-  original.value = "";
+  x1.value= "";
+  x2.value = "";
+  Polinomio.value = "";
+  entrada1.innerHTML = "";
+  entrada2.innerHTML = "";
+  pol.innerHTML = "";
+  bin1.innerHTML = "";
+  bin2.innerHTML = "";
+  Res.innerHTML = "";
 }
